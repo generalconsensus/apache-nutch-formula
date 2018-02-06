@@ -32,7 +32,7 @@ install_cron:
     pkg.installed:
       - name: cronie
 
-install_cron:
+install_crontabs:
     pkg.installed:
       - name: crontabs
 
