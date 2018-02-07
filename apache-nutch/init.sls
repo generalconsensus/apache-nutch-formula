@@ -1,5 +1,8 @@
 # Install Apache Nutch as a dependency for other states
 {% set apachenutchver = salt['pillar.get']('apachenutchver', '2.3.1') %}
+# Install Java as a dependency for other states
+{% set java_home = salt['pillar.get']('java', '/usr/lib/jvm/java-1.7.0') %}
+
 
 extract_apachenutch:
   archive.extracted:
@@ -56,17 +59,15 @@ install_ant:
     pkg.installed:
       - name: ant
 
-# Install Java as a dependency for other states
-{% set java_home = salt['pillar.get']('java', '/usr/lib/jvm/java-1.7.0') %}
 
 # File.append searches the file for your text before it appends so it won't append multiple times
 root_java_home:
   file.append:
     - name: /root/.bash_profile
-    - text: export JAVA_HOME={{ pillar['java_home'] }}
+    - text: export JAVA_HOME={{ java_home }}
 
 # File.append searches the file for your text before it appends so it won't append multiple times
 vagrant_java_home:
   file.append:
     - name: /vagrant/.bash_profile
-    - text: export JAVA_HOME={{ pillar['java_home'] }}      
+    - text: export JAVA_HOME={{ java_home }}
