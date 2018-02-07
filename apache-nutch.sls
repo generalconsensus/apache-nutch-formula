@@ -10,6 +10,22 @@ extract_apachenutch:
     - if_missing: /vagrant/apache-nutch-{{ apachenutchver }} # assuming the extracted tgz creates this dir
     - skip_verify: true
 
+
+# gora.properties
+/vagrant/apache-nutch-{{ apachenutchver }}/gora.properties:
+  file.managed:
+    - source: salt://apache-nutch/files/gora.properties
+
+# ivy.xml
+/vagrant/apache-nutch-{{ apachenutchver }}/ivy.xml:
+  file.managed:
+    - source: salt://apache-nutch/files/ivy.xml
+
+# nutch-site.xml
+/vagrant/apache-nutch-{{ apachenutchver }}/nutch-site.xml:
+  file.managed:
+    - source: salt://apache-nutch/files/nutch-site.xml
+
 mongo_repo:
   pkgrepo.managed:
     - humanname: MongoDB
