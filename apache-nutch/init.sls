@@ -28,6 +28,12 @@ extract_apachenutch:
 /vagrant/apache-nutch-{{ apachenutchver }}/nutch-site.xml:
   file.managed:
     - source: salt://apache-nutch/files/nutch-site.xml
+    
+
+# regex-urlfilter.txt
+/vagrant/apache-nutch-{{ apachenutchver }}/conf/regex-urlfilter.txt:
+  file.managed:
+    - source: salt://apache-nutch/files/regex-urlfilter.txt    
 
 mongo_repo:
   pkgrepo.managed:
