@@ -29,11 +29,20 @@ extract_apachenutch:
   file.managed:
     - source: salt://apache-nutch/files/nutch-site.xml
     
-
 # regex-urlfilter.txt
 /vagrant/apache-nutch-{{ apachenutchver }}/conf/regex-urlfilter.txt:
   file.managed:
-    - source: salt://apache-nutch/files/regex-urlfilter.txt    
+    - source: salt://apache-nutch/files/regex-urlfilter.txt
+
+# urls/seeds.txt
+/vagrant/apache-nutch-{{ apachenutchver }}/urls/seeds.txt:
+  file.managed:
+    - source: salt://apache-nutch/files/seeds.txt
+
+# .gitignore
+/vagrant/apache-nutch-{{ apachenutchver }}/.gitignore:
+  file.managed:
+    - source: salt://apache-nutch/files/.gitignore   
 
 mongo_repo:
   pkgrepo.managed:
